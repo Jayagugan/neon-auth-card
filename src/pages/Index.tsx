@@ -184,13 +184,13 @@ const Index = () => {
           {(currentView === 'login' || currentView === 'signup') && (
             <div className="floating-input fade-in-up-delay-2">
               <div className="relative">
-                <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground z-10" />
+                <Mail className="absolute left-3 top-4 w-4 h-4 text-muted-foreground z-10" />
                 <input
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="email"
-                  className="pl-12 pr-4"
+                  className="pl-10"
                   required
                 />
                 <label htmlFor="email">Email or Username</label>
@@ -202,13 +202,13 @@ const Index = () => {
           {currentView === 'forgot' && (
             <div className="floating-input fade-in-up-delay-2">
               <div className="relative">
-                <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground z-10" />
+                <Mail className="absolute left-3 top-4 w-4 h-4 text-muted-foreground z-10" />
                 <input
                   type="email"
                   value={resetEmail}
                   onChange={(e) => setResetEmail(e.target.value)}
                   placeholder="email"
-                  className="pl-12 pr-4"
+                  className="pl-10"
                   required
                 />
                 <label htmlFor="resetEmail">Email Address</label>
@@ -220,20 +220,20 @@ const Index = () => {
           {(currentView === 'login' || currentView === 'signup') && (
             <div className="floating-input fade-in-up-delay-2">
               <div className="relative">
-                <Lock className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground z-10" />
+                <Lock className="absolute left-3 top-4 w-4 h-4 text-muted-foreground z-10" />
                 <input
                   type={showPassword ? 'text' : 'password'}
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   placeholder="password"
-                  className="pl-12 pr-12"
+                  className="pl-10 pr-10"
                   required
                 />
                 <label htmlFor="password">Password</label>
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-4 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-primary transition-colors z-10"
+                  className="absolute right-3 top-4 text-muted-foreground hover:text-primary transition-colors z-10"
                 >
                   {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
                 </button>
@@ -245,13 +245,13 @@ const Index = () => {
           {currentView === 'signup' && (
             <div className="floating-input fade-in-up-delay-2">
               <div className="relative">
-                <Lock className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground z-10" />
+                <Lock className="absolute left-3 top-4 w-4 h-4 text-muted-foreground z-10" />
                 <input
                   type={showPassword ? 'text' : 'password'}
                   value={confirmPassword}
                   onChange={(e) => setConfirmPassword(e.target.value)}
                   placeholder="confirm password"
-                  className="pl-12 pr-4"
+                  className="pl-10"
                   required
                 />
                 <label htmlFor="confirmPassword">Confirm Password</label>
