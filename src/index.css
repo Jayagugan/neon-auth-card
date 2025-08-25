@@ -8,35 +8,55 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Cyber Security Theme - Dark Mode Primary */
+    --background: 225 25% 5%;
+    --foreground: 180 100% 85%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card: 225 20% 8%;
+    --card-foreground: 180 100% 85%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover: 225 20% 8%;
+    --popover-foreground: 180 100% 85%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 180 100% 50%;
+    --primary-foreground: 225 25% 5%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 270 100% 65%;
+    --secondary-foreground: 225 25% 5%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 225 15% 15%;
+    --muted-foreground: 180 50% 65%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 285 100% 70%;
+    --accent-foreground: 225 25% 5%;
 
-    --destructive: 0 84.2% 60.2%;
+    --destructive: 0 85% 60%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 225 15% 20%;
+    --input: 225 15% 15%;
+    --ring: 180 100% 50%;
 
-    --radius: 0.5rem;
+    --radius: 0.75rem;
+
+    /* Cyber Security Custom Colors */
+    --cyber-cyan: 180 100% 50%;
+    --cyber-purple: 270 100% 65%;
+    --cyber-pink: 285 100% 70%;
+    --cyber-blue: 220 100% 60%;
+    
+    /* Glassmorphism Effects */
+    --glass-bg: 225 20% 8% / 0.1;
+    --glass-border: 180 100% 50% / 0.2;
+    --glass-shadow: 0 8px 32px rgba(0, 255, 255, 0.1);
+    
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--cyber-cyan)), hsl(var(--cyber-purple)));
+    --gradient-secondary: linear-gradient(135deg, hsl(var(--cyber-purple)), hsl(var(--cyber-pink)));
+    --gradient-background: linear-gradient(135deg, hsl(225 25% 3%), hsl(225 35% 8%));
+    
+    /* Animations */
+    --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 
     --sidebar-background: 0 0% 98%;
 
@@ -101,5 +121,92 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+    background: var(--gradient-background);
+    min-height: 100vh;
+  }
+}
+
+@layer components {
+  /* Glassmorphism Card */
+  .glass-card {
+    @apply backdrop-blur-xl border;
+    background: rgba(34, 40, 59, 0.1);
+    border: 1px solid rgba(0, 255, 255, 0.2);
+    box-shadow: var(--glass-shadow);
+  }
+  
+  /* Floating Label Input */
+  .floating-input {
+    @apply relative;
+  }
+  
+  .floating-input input {
+    @apply w-full px-4 pt-6 pb-2 bg-transparent border border-border rounded-lg text-foreground placeholder-transparent focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300;
+    background: rgba(34, 40, 59, 0.3);
+  }
+  
+  .floating-input label {
+    @apply absolute left-4 top-4 text-muted-foreground transition-all duration-300 pointer-events-none;
+  }
+  
+  .floating-input input:focus + label,
+  .floating-input input:not(:placeholder-shown) + label {
+    @apply text-xs text-primary transform -translate-y-2;
+  }
+  
+  /* Gradient Button */
+  .gradient-button {
+    background: var(--gradient-primary);
+    @apply text-primary-foreground font-semibold py-3 px-6 rounded-lg transition-all duration-300 hover:scale-105 hover:shadow-lg;
+    box-shadow: 0 4px 20px rgba(0, 255, 255, 0.3);
+  }
+  
+  .gradient-button:hover {
+    box-shadow: 0 6px 30px rgba(0, 255, 255, 0.5);
+  }
+  
+  /* Animations */
+  .fade-in-up {
+    animation: fadeInUp 0.8s ease-out forwards;
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  
+  .fade-in-up-delay-1 {
+    animation: fadeInUp 0.8s ease-out 0.2s forwards;
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  
+  .fade-in-up-delay-2 {
+    animation: fadeInUp 0.8s ease-out 0.4s forwards;
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  
+  .fade-in-up-delay-3 {
+    animation: fadeInUp 0.8s ease-out 0.6s forwards;
+    opacity: 0;
+    transform: translateY(30px);
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  .glow-effect {
+    filter: drop-shadow(0 0 10px hsl(var(--primary)));
+  }
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
